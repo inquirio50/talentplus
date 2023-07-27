@@ -1,0 +1,207 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reelcruit
+  # namespace: test
+  labels:
+    app: reelcruit
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reelcruit
+  template:
+    metadata:
+      labels:
+        app: reelcruit
+    spec:
+      containers:
+        - name: reelcruit
+          image: reelcruitapp/reelcruit-candidate-frontend
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reelcruit-svc
+  # namespace: test
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: reelcruit
+---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: candidate-ingress
+#   # namespace: test
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#    - host: candidate.reelcruit.com
+#      http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: reelcruit-svc
+#             port:
+#               number: 3000
+#    - host: admin.reelcruit.com
+#      http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: reelcruit-admin-svc
+#             port:
+#               number: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reelcruit-backend
+  # namespace: test
+  labels:
+    app: reelcruit-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reelcruit-backend 
+  template:
+    metadata:
+      labels:
+        app: reelcruit-backend
+    spec:
+      containers:
+        - name: reelcruit
+          image: reelcruitapp/reelcruit-candidate-api
+          ports:
+            - containerPort: 5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reelcruit-bknd-svc
+  # namespace: test
+spec:
+  # type: NodePort
+  ports:
+    - name: http
+      port: 5000
+      targetPort: 5000
+  selector:
+    app: reelcruit-backend
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reelcruit-admin-app
+  # namespace: test
+  labels:
+    app: reelcruit-admin-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reelcruit-admin-app
+  template:
+    metadata:
+      labels:
+        app: reelcruit-admin-app
+    spec:
+      containers:
+        - name: reelcruit
+          image: reelcruitapp/reelcruit-admin-app
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reelcruit-admin-svc
+  # namespace: test
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: reelcruit-admin-app
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reelcruit-employer-app
+  # namespace: test
+  labels:
+    app: reelcruit-employer-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reelcruit-employer-app
+  template:
+    metadata:
+      labels:
+        app: reelcruit-employer-app
+    spec:
+      containers:
+        - name: reelcruit
+          image:  reelcruitapp/reelcruit-employer-app
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reelcruit-employer-svc
+  # namespace: test
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: reelcruit-employer-app
+
+---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: employer-ingress
+#   # namespace: test
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#    - host: employer.reelcruit.com
+#      http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: reelcruit-employer-svc
+#             port:
+#               number: 3000

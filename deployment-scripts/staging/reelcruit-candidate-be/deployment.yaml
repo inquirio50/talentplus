@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reelcruit-backend-staging
+  namespace: staging
+  labels:
+    app: reelcruit-backend-staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reelcruit-backend-staging
+  template:
+    metadata:
+      labels:
+        app: reelcruit-backend-staging
+    spec:
+      containers:
+        - name: reelcruit
+          image: reelcruitapp/reelcruit-candidate-api:staging
+          ports:
+            - containerPort: 5001
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reelcruit-backend-staging-svc
+  namespace: staging
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 5001
+      targetPort: 5001
+  selector:
+    app: reelcruit-backend-staging

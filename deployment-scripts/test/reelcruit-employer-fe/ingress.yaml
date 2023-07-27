@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: employer-fe-test-ingress
+  namespace: test
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+   - host: test-employer.reelcruit.com
+     http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: reelcruit-employer-test-svc
+            port:
+              number: 3000
+    
+   - host: www.test-employer.reelcruit.com
+     http:
+       paths:
+       - path: /
+         pathType: Prefix
+         backend:
+           service:
+             name: reelcruit-employer-test-svc
+             port:
+               number: 3000

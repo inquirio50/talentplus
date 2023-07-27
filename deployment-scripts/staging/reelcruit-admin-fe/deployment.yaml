@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-admin-staging
+  namespace: staging
+  labels:
+    app: reelcruit-admin-staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reelcruit-admin-staging
+  template:
+    metadata:
+      labels:
+        app: reelcruit-admin-staging
+    spec:
+      containers:
+        - name: reelcruit
+          image: reelcruitapp/reelcruit-admin-app:staging
+          ports:
+            - containerPort: 3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: reelcruit-admin-staging-svc
+  namespace: staging
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: reelcruit-admin-staging

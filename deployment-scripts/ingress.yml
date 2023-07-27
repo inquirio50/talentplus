@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress 
+metadata:
+  name: candidate-ingress
+  namespace: production
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+   - host: test.candidate.reelcruit.com
+     http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: reelcruit-svc
+            port:
+              number: 3000
+   - host: test.admin.reelcruit.com
+     http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: reelcruit-admin-svc
+            port:
+              number: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: employer-ingress
+  namespace: production
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+   - host: test.employer.reelcruit.com
+     http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: reelcruit-employer-svc
+            port:
+              number: 3000

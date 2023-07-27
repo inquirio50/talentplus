@@ -1,0 +1,56 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: employerfrontendservice
+#   namespace: devel
+#   labels:
+#     app: employerfrontend
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: employerfrontend
+#   ports:
+#     - name: http
+#       protocol: TCP
+#       port: 80
+#       targetPort: 80
+#     - name: https
+#       protocol: TCP
+#       port: 443
+#       targetPort: 443
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: employerfrontendservice
+#   namespace: devel
+#   labels:
+#     app: employerfrontend
+# spec:
+#   selector:
+#     matchLabels:
+#       app: employerfrontend
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: employerfrontend
+#     spec:
+#       containers:
+#         - name: employerfrontend
+#           image: scinet0786/reelcruit-app-fe:latest
+#           ports:
+#             - containerPort: 80
+#               protocol: TCP
+#             - containerPort: 443
+#               protocol: TCP
+#           resources:
+#             limits:
+#               cpu: 500m
+#               memory: 1000Mi
+#             requests:
+#               cpu: 300m
+#               memory: 500Mi
+#           # imagePullPolicy: Always
+#       nodeSelector:
+#         topology.kubernetes.io/zone: ca-central-1
