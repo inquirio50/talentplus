@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  admin-frontend:
+    container_name: reelcruitapp/reelcruit-candidate-frontend:staging
+    image: reelcruitapp/reelcruit-candidate-frontend:staging
+    build:
+      context: .
+      dockerfile: ./Dockerfile.staging
+      network: host
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 3000:3000
+    environment:
+      REACT_APP_API_URL: http://a5681aa47982f4f468de8bf939d68d1f-2012857988.ca-central-1.elb.amazonaws.com/api
+      NODE_ENV: Staging

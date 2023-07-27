@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reelcruit-candidate
+  namespace: production
+  labels:
+    app: reelcruit-candidate
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reelcruit-candidate
+  template:
+    metadata:
+      labels:
+        app: reelcruit-candidate
+    spec:
+      containers:
+        - name: reelcruit
+          image: reelcruitapp/reelcruit-candidate-frontend
+          ports:
+            - containerPort: 3000

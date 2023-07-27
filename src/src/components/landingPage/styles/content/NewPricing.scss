@@ -1,0 +1,135 @@
+.new-pricing {
+    background-color: #f3f3f3;
+    padding: 5rem;
+    width: 100%;
+
+    @media (max-width: 900px) {
+        padding: 5rem 2rem;
+    }
+
+    @media (max-width: 768px) {
+        padding: 5rem 1rem;
+    }
+
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        display: grid;
+        gap: 3rem;
+        justify-items: center;
+    }
+
+    &__heading {
+        font-size: 3rem;
+        text-align: center;
+        color: #0b1b39;
+
+        @media (max-width: 900px) {
+            font-size: 2.5rem;
+        }
+
+        @media (max-width: 600px) {
+            font-size: 2rem;
+        }
+    }
+
+    &__cards {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+
+        @media (max-width: 900px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 600px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    &__card {
+        background-color: #fff;
+        border-radius: 1rem;
+        padding: 2rem;
+        display: grid;
+        align-content: start;
+        gap: 1rem;
+
+        @media (max-width: 600px) {
+            padding: 1.5rem;
+        }
+    }
+
+    &__title {
+        color: #000;
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+
+        @media (max-width: 600px) {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__tabs {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    &__tab {
+        flex: 1;
+        background: none;
+        border: none;
+        text-transform: capitalize;
+        padding-bottom: 0.5rem;
+        font-weight: 600;
+        border-bottom: solid 2px transparent;
+
+        &--selected {
+            color: #eb078c;
+            border-bottom: solid 2px #eb078c;
+        }
+    }
+
+    &__price {
+        color: #000;
+        font-size: 2.5rem;
+        line-height: 2rem;
+        text-align: center;
+
+        &--small {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__list {
+        margin: 1.5rem 0;
+        display: grid;
+        padding: 0 !important;
+        gap: 1rem;
+        list-style: none;
+
+        &-item {
+            display: flex;
+
+            & span {
+                flex: 1;
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    &__description {
+        font-weight: 700;
+        color: #000;
+    }
+
+    &__terms {
+        font-weight: 700;
+        color: #eb078c;
+    }
+}

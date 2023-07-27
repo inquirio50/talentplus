@@ -1,0 +1,422 @@
+.row {
+  &.flex_display{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    & > [class*='col-'] {
+      display: flex;
+      flex-direction: column;
+   }
+  }
+}
+
+.inputErrorLabel
+{
+    position: absolute;
+    color: red;
+}
+
+.error{
+    color: red;
+}
+
+.margin-right{
+    margin-right: 10px;
+}
+
+.confirmation{
+    position: relative;
+    top: 20px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 600;
+}
+
+.choice-btn{
+    font-size: 50px;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    color: $pink;
+    box-shadow: unset;
+    & p{
+        font-size: 15px;
+    }
+}
+
+.fadeOut{
+     opacity:0;
+     display: none;
+     transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+
+}
+.fadeIn{
+     opacity:1;
+     transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+
+}
+
+.top-space{
+    margin-top: 15px;
+}
+
+.top-margin{
+    margin-top: 15px;
+}
+
+.profile_card{
+    & .title{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 25px;
+        align-content: center;
+    }
+    & .line{
+        font-size: 18px;
+        
+    }
+    & .add_btn{
+       display: flex;
+       justify-content: flex-end;
+    }
+}
+
+.profile_btns{
+    display: flex;
+    justify-content: right;
+    align-content: center;
+    justify-items: flex-end;
+    justify-self: flex-end;
+    & button{
+        margin-top: 25px;
+        margin-right: 15px;
+        width: 100px;
+    }
+}
+
+.experience_display{
+    &.row{
+        display: flex;
+    }
+
+    & label{
+        font-size: 20px;
+    }
+
+    & p{
+        font-size: 17px;
+    }
+}
+
+.employer_profile_card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & button{
+        position: relative;
+        top: -10px;
+    }
+
+}
+
+.btn_job_list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  & button{
+      position: relative;
+      top: -10px;
+  }
+  padding-top: 10px;
+}
+
+.match_card{
+  padding: 10px;
+}
+
+.match_btn_container{
+  padding: 20px;
+}
+
+.match_btn_child{
+  width: 25%;
+  float: left;
+  padding: 20px;
+}
+
+.internalLink{
+    cursor: pointer;
+}
+
+
+.btn_row
+{
+    display: flex;
+    justify-content: flex-end;
+    & button, span {
+        &:not(:last-child){
+            margin-right: 20px;    
+        }
+    }
+}
+
+.consultant_dashboad{
+    justify-content: stretch;
+}
+
+.consultant_dashboard_calendar{
+    height: 96%;
+}
+
+.back_to_login{
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    position: relative;
+    margin-top: 100px;
+    cursor: pointer;
+    & b{
+        cursor: pointer;
+    }
+}
+
+.user_admin_view_btn{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 20px 20px 20px 0;
+}
+
+.boxed label {
+    display: inline-block;
+    width: 200px;
+    padding: 10px;
+    border: solid 2px #ccc;
+    transition: all 0.3s;
+  }
+  
+  .boxed input[type="radio"] {
+    display: none;
+  }
+  
+  .boxed input[type="radio"]:checked + label {
+    border: solid 2px green;
+  }
+
+
+#backToLoginBtn{
+    cursor: pointer;
+    &:hover{
+        background-color: #ec008b;
+        color: white;
+    }
+}
+
+
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $pink;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .login-top-menu{
+    height: 50px;
+    background-color: white;
+
+    & .dropdown{
+      display: flex;
+      justify-content: flex-end;
+      right: 50px;
+      top: 5px;
+    }
+  }
+
+  .consultant_dashboard_calendar{
+    font-family: 'Raleway' !important;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.1;
+  }
+
+  #status-select{
+    margin-bottom: 10px;
+  }
+  
+  .add_jobs{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .streched_card{
+    height: 100%;
+  }
+
+  .streched_btn_link{
+    display: flex;
+    margin-bottom: 10px;
+    & .card{
+      padding: 15px;
+      width: 100% !important;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    & p{
+      font-size: 25px;
+      position: relative;
+      top: 9px;
+    }
+    & a {
+      position: relative;
+      top: 5px;
+    }
+    
+  }
+
+.text-hired
+{
+  color: #ec008b !important;
+}
+
+.text-rejected{
+  color: grey !important;
+}
+
+.text-match{
+  color: #00FF00 !important;
+}
+
+.reelcruit_slider{
+
+  & span{
+    color: $pink;
+  }
+
+  & .end_value{
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.match_container{
+  flex-direction: column;
+  & .match_card{
+    width: 700px;
+    
+    & .match_user_image{
+      max-width: 150px;
+      max-height: 150px;
+    }
+    & button{
+      width: 200px;
+    }
+  }
+}
+.label_input{
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.input_isCurrent{
+  margin-top: 10px;
+}
+
+.profile_card{
+  padding-bottom: 5px;
+}
+
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners{
+  min-height: 250px;
+  font-size: 16px;
+  color: black;
+}
+
+.job_description{
+  font-size: 18px;
+}
