@@ -7,7 +7,7 @@ COPY package*.json ./
 
 RUN npm install --verbose
 COPY . ./
-COPY .env.production ./.env
+#COPY .env.production ./.env
 RUN chmod +x ./env.sh
 RUN ./env.sh
 RUN npm run build --production
