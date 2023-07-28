@@ -5,9 +5,6 @@ pipeline {
         SERVICE_NAME = "talent"
         DOCKERHUB_USERNAME = "justicebxj"
         REPOSITORY_TAG = "${DOCKERHUB_USERNAME}/${SERVICE_NAME}:${BUILD_ID}"
-        AWS_REGION = 'us-west-2' // Replace with your desired AWS region
-        AWS_ACCESS_KEY_ID = 'YOUR_AWS_ACCESS_KEY_ID' // Replace with your AWS Access Key ID
-        AWS_SECRET_ACCESS_KEY = 'YOUR_AWS_SECRET_ACCESS_KEY' // Replace with your AWS Secret Access Key
     }
 
     
@@ -47,16 +44,6 @@ pipeline {
                 """
             }
         }
-
-         stage('AWS CLI Configure') {
-            steps {
-                script {
-                    sh "aws configure set region ${env.AWS_REGION}"
-                    sh "aws configure set aws_access_key_id ${env.AWS_ACCESS_KEY_ID}"
-                    sh "aws configure set aws_secret_access_key ${env.AWS_SECRET_ACCESS_KEY}"
-                }
-           }
-        }
         
 
         stage ('Deploy to Cluster') {
