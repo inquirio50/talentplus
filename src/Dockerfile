@@ -10,7 +10,7 @@ COPY . ./
 #COPY .env.production ./.env
 RUN chmod +x ./env.sh
 RUN ./env.sh
-RUN npm run build --production
+RUN npm run build 
 
 EXPOSE 3000
 
